@@ -1,0 +1,149 @@
+<html>
+    <head>
+       <style>
+            html, body, .oktatoZona{
+                margin:0;
+                border:0;
+                width:100%;
+                height:100%;
+                top:0;
+                left:0;
+                font-family:arial;
+            }
+            .title{
+                margin-top:10px;
+                margin-bottom:10px;
+                height:29px;
+                font-size:25px;
+            }
+            .box{
+                margin:10px;
+                border:2px solid black;
+                left:10px;
+            }
+
+            .title, .box, .boxTitle, .boxComment{
+                text-align:center;
+            }
+            .title, .boxTitle{
+                font-weight:bold;
+            }
+            .boxTitle{
+                height:25px;
+                font-size:20px;
+            }
+            .boxComment{
+                height:20px;
+                font-size:15px;
+            }
+       </style>
+       <script>
+           const listManagerClass = function (){
+               this.add = function(obj){
+                   lists.push(obj);
+                   return lists[lists.length-1];
+               }
+               this.obj = function(get){
+                   if(typeof get === "undefined")
+                       return lists[current];
+                   return lists[get];
+               }
+               this.refresh = function(){
+                   render();
+               }
+               this.prev = function(){
+                   if(1>current)
+                       return false;
+                   currrent--;
+                   render();
+               }
+               this.next = function(){
+                   if(current+2>lists.length)
+                       return false;
+                   current++;
+                   render();
+               }
+               let render = function(){
+                   lists[current].render();
+               }
+               let current = 0;
+               let lists = [];
+           }
+           const stepListClass = function(titleIn){
+              this.add = function(...boxIn){
+                  for(let i of boxIn)
+                      boxes.push(i);
+              }
+              this.render=function(){
+                  renderTitle();
+                  for(let i in boxes)
+                      renderBox(i);
+                  document.getElementById('oktatoZona').innerHTML=rendered;
+                  return rendered;
+              }
+              let renderTitle = function(){
+                  rendered = '<div class="title">'+title+"</div>"
+              }
+              let renderBox = function(i){
+                  rendered += '<div class="box">';
+                  rendered += '<div class="boxTitle">'+boxes[i].title+"</div>";
+                  if(typeof boxes[i].comment !== "undefined")
+                      rendered += '<div class="boxComment">'+boxes[i].comment+"</div>";
+                  rendered += "</div>";
+              }
+              let title = titleIn;
+              let rendered = "";
+              let boxes = [];
+
+           }
+       </script>
+    </head>
+    <body>
+        <div class="oktatoZona" id="oktatoZona"></div>
+        <script>
+            let testList = new listManagerClass();
+            
+            testList.add(new stepListClass('Linux Boot Sequence with MBR')).add(
+               {'title':'Bios',comment:'BIOS stands for Basic Input/Output System'},
+               {'title':'MBR', comment:'Master Boot Record'},
+               {'title':'BootManager',comment:'lilo, syslinux, grub '},
+               {'title':'Kernel',comment:'This is the linux himself'},
+               {'title':'Init',comment:'Systemd, OpenRC, etc...'},
+               {'title':'Shell/GUI',comment:'Bash,Ksh,I3wm,Gnome,KDE' }
+            );
+            testList.add(new stepListClass('Windows 7/8/10  Boot Sequence with MBR')).add(
+               {'title':'Bios',comment:'BIOS stands for Basic Input/Output System'},
+               {'title':'MBR', comment:'Master Boot Record'},
+               {'title':'OS Loader',comment:'Winload.exe loads essential system drivers that are required'},
+               {'title':'OS Initialization',comment:'kernel initialization, PnP activity, service start, logon initialization.'}
+            );
+            testList.add(new stepListClass('Windows 7/8/10 OS Initialization')).add(
+               {'title':'PreSMSS', comment:'Kernel Initialization'},
+               {'title':'SMSSInit',comment:'Session Initialization'},
+               {'title':'WinLogonInit',comment:'Logon Initialization'},
+               {'title':'ExplorerInit',comment:'Explorer Initialization'}
+            );
+            testList.add(new stepListClass('Linux directory structiure')).add(
+               {'title':'/bin'},
+               {'title':'/boot'},
+               {'title':'/dev'},
+               {'title':'/etc'},
+               {'title':'/home'},
+               {'title':'/lib'},
+               {'title':'/media'},
+               {'title':'/mnt'},
+               {'title':'/opt'},
+               {'title':'/proc'},
+               {'title':'/root'},
+               {'title':'/run'},
+               {'title':'/sbin'},
+               {'title':'/srv'},
+               {'title':'/sys'},
+               {'title':'/tmp'},
+               {'title':'/usr'},
+               {'title':'/var'}
+            );
+            testList.refresh();
+        </script>
+    </body>
+</html>
