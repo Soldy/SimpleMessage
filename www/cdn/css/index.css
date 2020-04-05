@@ -33,3 +33,16 @@ html, body, .oktatoZona{
     height:20px;
     font-size:15px;
 }
+
+.page{
+    display:none; 
+}
+
+.pageLoading, .page{
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+}
+
+
