@@ -1,66 +1,97 @@
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="./cdn/css/index.css">
-        <script src="./cdn/js/index.js"></script>
-        <script src="./cdn/js/pages.js"></script>
-    </head>
-    <body>
-        <div class="pageLoading" id="pageloading">
-            ....Loading...
+
+<head>
+    <link rel="stylesheet" type="text/css" href="./cdn/css/index.css">
+    <link rel="stylesheet" type="text/css" href="./cdn/css/usersList.css">
+    <script src="./cdn/js/index.js"></script>
+    <script src="./cdn/js/pages.js"></script>
+    <script src="./cdn/js/users.js"></script>
+</head>
+
+<body>
+    <div class="pageLoading" id="pageloading">
+        ....Loading...
+    </div>
+    <div class="page" id="pagelogin">
+        <form method="post">
+            <input placeholder="login"><br>
+            <input placeholder="password"><br>
+            <button id="loginbutton">Login</button>
+        </form>
+    </div>
+    <div class="page" id="pagemessage">
+        <div class="oktatoZona" id="oktatoZona"></div>
+        <script>
+            let testList = new listManagerClass();
+            testList.add(new stepListClass('Linux Boot Sequence with MBR')).add(
+                { 'title': 'Bios', comment: 'BIOS stands for Basic Input/Output System' },
+                { 'title': 'MBR', comment: 'Master Boot Record' },
+                { 'title': 'BootManager', comment: 'lilo, syslinux, grub ' },
+                { 'title': 'Kernel', comment: 'This is the linux himself' },
+                { 'title': 'Init', comment: 'Systemd, OpenRC, etc...' },
+                { 'title': 'Shell/GUI', comment: 'Bash,Ksh,I3wm,Gnome,KDE' }
+            );
+            testList.add(new stepListClass('Windows 7/8/10  Boot Sequence with MBR')).add(
+                { 'title': 'Bios', comment: 'BIOS stands for Basic Input/Output System' },
+                { 'title': 'MBR', comment: 'Master Boot Record' },
+                { 'title': 'OS Loader', comment: 'Winload.exe loads essential system drivers that are required' },
+                { 'title': 'OS Initialization', comment: 'kernel initialization, PnP activity, service start, logon initialization.' }
+            );
+            testList.add(new stepListClass('Windows 7/8/10 OS Initialization')).add(
+                { 'title': 'PreSMSS', comment: 'Kernel Initialization' },
+                { 'title': 'SMSSInit', comment: 'Session Initialization' },
+                { 'title': 'WinLogonInit', comment: 'Logon Initialization' },
+                { 'title': 'ExplorerInit', comment: 'Explorer Initialization' }
+            );
+            testList.add(new stepListClass('Linux directory structiure')).add(
+                { 'title': '/bin' },
+                { 'title': '/boot' },
+                { 'title': '/dev' },
+                { 'title': '/etc' },
+                { 'title': '/home' },
+                { 'title': '/lib' },
+                { 'title': '/media' },
+                { 'title': '/mnt' },
+                { 'title': '/opt' },
+                { 'title': '/proc' },
+                { 'title': '/root' },
+                { 'title': '/run' },
+                { 'title': '/sbin' },
+                { 'title': '/srv' },
+                { 'title': '/sys' },
+                { 'title': '/tmp' },
+                { 'title': '/usr' },
+                { 'title': '/var' }
+            );
+            testList.refresh();
+        </script>
+    </div>
+    <div class="page" id="pagechat">
+
+        <div class="left chat-rooms">
+            asd
         </div>
-        <div class="page" id="pagelogin">
-            <form method="post">
-                  <input placeholder="login"><br>
-                  <input placeholder="password"><br>
-                  <button id="loginbutton">Login</button>
-            </form>
+        <div class="right chat-middle">
+            <div class="left chat-text">
+                asd
+            </div>
+            <div class="right chat-users" id="chatuserlist-users">
+                asd
+                <script>
+                    let testUsersList = new usersListClass('1');
+                    testUsersList.add({
+                        'id': '1',
+                        'name': 'bela',
+                        'status': 4,
+                        'picture': 'img_url',
+                        'messages': 4
+                    });
+                    testUsersList.render();
+                </script>
+
+            </div>
         </div>
-        <div class="page" id="pagemessage">
-            <div class="oktatoZona" id="oktatoZona"></div>
-            <script>
-                let testList = new listManagerClass();
-                testList.add(new stepListClass('Linux Boot Sequence with MBR')).add(
-                   {'title':'Bios',comment:'BIOS stands for Basic Input/Output System'},
-                   {'title':'MBR', comment:'Master Boot Record'},
-                   {'title':'BootManager',comment:'lilo, syslinux, grub '},
-                   {'title':'Kernel',comment:'This is the linux himself'},
-                   {'title':'Init',comment:'Systemd, OpenRC, etc...'},
-                   {'title':'Shell/GUI',comment:'Bash,Ksh,I3wm,Gnome,KDE' }
-                );
-                testList.add(new stepListClass('Windows 7/8/10  Boot Sequence with MBR')).add(
-                   {'title':'Bios',comment:'BIOS stands for Basic Input/Output System'},
-                   {'title':'MBR', comment:'Master Boot Record'},
-                   {'title':'OS Loader',comment:'Winload.exe loads essential system drivers that are required'},
-                   {'title':'OS Initialization',comment:'kernel initialization, PnP activity, service start, logon initialization.'}
-                );
-                testList.add(new stepListClass('Windows 7/8/10 OS Initialization')).add(
-                   {'title':'PreSMSS', comment:'Kernel Initialization'},
-                   {'title':'SMSSInit',comment:'Session Initialization'},
-                   {'title':'WinLogonInit',comment:'Logon Initialization'},
-                   {'title':'ExplorerInit',comment:'Explorer Initialization'}
-                );
-                testList.add(new stepListClass('Linux directory structiure')).add(
-                   {'title':'/bin'},
-                   {'title':'/boot'},
-                   {'title':'/dev'},
-                   {'title':'/etc'},
-                   {'title':'/home'},
-                   {'title':'/lib'},
-                   {'title':'/media'},
-                   {'title':'/mnt'},
-                   {'title':'/opt'},
-                   {'title':'/proc'},
-                   {'title':'/root'},
-                   {'title':'/run'},
-                   {'title':'/sbin'},
-                   {'title':'/srv'},
-                   {'title':'/sys'},
-                   {'title':'/tmp'},
-                   {'title':'/usr'},
-                   {'title':'/var'}
-                );
-                testList.refresh();
-            </script>
-        </div>
-    </body>
+    </div>
+</body>
+
 </html>

@@ -1,0 +1,57 @@
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.chat-rooms {
+    background-color: yellow;
+    height: 100%;
+    width: 100px;
+}
+
+.chat-middle{
+    height:100%;
+    width:calc(100%-100px);
+}
+
+.chat-users {
+    background-color: blue;
+    height: 100%;
+    width: 100px;
+}
+
+#chatuserlist-users{
+    color:white;
+}
+
+.chat-text {
+    background-color: green;
+    height: 100%;
+    width: calc(100%-200px);
+}
+.chat-user{
+    background-color:pink;
+    height:50px;
+}
+.chatuserlist-picture{
+    height:50px;
+    width:50px;
+    float:left;
+}
+.chatuserlist-username{
+    height:50px;
+    width:calc(100%-50px);
+    display:inline-block;
+}
+.chatuserlist-status{
+    height:50px;
+    width:40%;
+    display:inline-block;
+}
+.chatuserlist-messages{
+    width:30%;
+    display:inline-block;
+}
