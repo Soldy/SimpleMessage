@@ -1,0 +1,101 @@
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.chat-rooms {
+    background-color: yellow;
+    height: 100%;
+    width: 100px;
+}
+
+.chat-middle{
+    height:100%;
+    width:calc(100% - 100px); 
+}
+
+.chat-users {
+    background-color: blue;
+    height: 100%;
+    width: 200px;
+}
+
+#chatuserlist-users{
+    color:white;
+}
+
+.chat-text {
+    background-color: green;
+    height: 100%;
+    width: calc(100% - 200px);
+}
+.chat-user{
+    background-color:pink;
+    height:50px;
+} 
+.chatuserlist-picture{
+    height:50px;
+    width:50px;
+    float:left;
+}
+.chatuserlist-username{
+    height:50px;
+    width:130px;
+    font-family: Consolas, Arial, sans-serif;
+    font-size: 22px;;
+    display:flex;
+    float:right; 
+    margin:auto; 
+}
+.chatuserlist-username p{
+    margin: auto;
+    margin-left:0;
+}
+.chatuserlist-status{
+    height:50px;
+    width:40%;
+    display:none;
+}
+.chatuserlist-messages{
+    width:30%;
+
+    display:none;
+}
+.bottom{
+    position: absolute;
+    bottom:0;
+}
+  .dot{
+      margin-left:10px;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 5px;
+    text-align: center;
+    width: 1.6em; 
+    font-size:16px;
+  }
+  
+  .dot-0{
+    background-color: #bbb;
+  }
+  .dot-1{
+      background-color: #008000;
+  }
+  .dot-2{
+      background-color: #ff2800;
+  }
+  .dot-3{
+      background-color: #ffaf03;
+  }
+  .dot-4{
+      background-color: #0208fd;
+      color:white;
+  }

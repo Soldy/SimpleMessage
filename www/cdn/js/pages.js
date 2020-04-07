@@ -18,7 +18,8 @@ const pagesClass = function(){
     let pages = [
        'loading',
        'login',
-       'message'
+       'message',
+       'chat'
     ]
 
 }
