@@ -31,7 +31,7 @@ const debugClass = function(){
         net.send({
             c : 'debug',
             data:sentDb
-        );
+        });
     }
     let clear = function(){
        db = [];
