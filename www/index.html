@@ -1,11 +1,14 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="./cdn/css/index.css">
     <link rel="stylesheet" type="text/css" href="./cdn/css/usersList.css">
+    <link rel="stylesheet" type="text/css" href="./cdn/css/userText.css">
     <script src="./cdn/js/index.js"></script>
     <script src="./cdn/js/pages.js"></script>
     <script src="./cdn/js/users.js"></script>
+    <script src="./cdn/js/messages.js"></script>
 </head>
 
 <body>
@@ -73,22 +76,64 @@
         </div>
         <div class="right chat-middle">
             <div class="left chat-text">
-                asd
+                <div class="chat-userchat" id="chat-userchat">
+                        <script>
+                            let testMessagesList = new messagesListClass();
+                            testMessagesList.add({
+                                'id' : '1',
+                                'message' : 'nibbaaaaaaa',
+                                'picture' : 'https://via.placeholder.com/15',
+                                'username' : 'Béla',
+                                'time' : '13:28'
+
+                            });
+                            testMessagesList.render();
+                        </script>
+                </div>
+                <div class="bottom chat-textinput" id="chat-textdiv">
+                    <form name="input-form">
+                        <input type="text" name="text-input" class="text-input" id="text-input" placeholder="Type here....">
+                        <button name="form-submit" id="form-submit" onclick="sendMessage();">OK</button>
+                        </form>
+                </div>
             </div>
-            <div class="right chat-users" id="chatuserlist-users">
-                asd
+            <div class="right chat-users" id="chatuserlist-users"> 
                 <script>
                     let testUsersList = new usersListClass('1');
                     testUsersList.add({
                         'id': '1',
-                        'name': 'bela',
+                        'name': 'Béla',
                         'status': 4,
-                        'picture': 'img_url',
+                        'picture': 'https://via.placeholder.com/50',
                         'messages': 4
+                    });
+                    testUsersList.add({
+                        'id': '2',
+                        'name': 'János',
+                        'status': 1,
+                        'picture': 'https://via.placeholder.com/50',
+                        'messages': 4
+                    });testUsersList.add({
+                        'id': '3',
+                        'name': 'Pista',
+                        'status': 3,
+                        'picture': 'https://via.placeholder.com/50',
+                        'messages': 99
+                    });testUsersList.add({
+                        'id': '4',
+                        'name': 'Karesz',
+                        'status': 2,
+                        'picture': 'https://via.placeholder.com/50',
+                        'messages': 11
+                    });testUsersList.add({
+                        'id': '5',
+                        'name': 'Lajos',
+                        'status': 0,
+                        'picture': 'https://via.placeholder.com/50',
+                        'messages': 3
                     });
                     testUsersList.render();
                 </script>
-
             </div>
         </div>
     </div>

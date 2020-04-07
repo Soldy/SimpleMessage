@@ -1,11 +1,11 @@
-const usersListClass = function () {
+const messagesListClass = function () {
     this.add = function (properties) {
         if (typeof properties === "undefined")
             return false;
-
-        lists[properties.id] = new userListClass(properties.id);
+        
+        lists[properties.id] = new messageListClass(properties.id);
         lists[properties.id].adds(properties);
-
+        
         return true;
     }
     this.set = function (id, property, val) {
@@ -18,11 +18,11 @@ const usersListClass = function () {
         document.getElementById('chatuserlist-userbox-' + id).outerHTML = "";
     }
     this.render = function () {
-        
-        document.getElementById('chatuserlist-users').innerHTML = render();
+        document.getElementById('chat-userchat').innerHTML = render();
     }
     let render = function () {
         let out = "<div>";
+        
         for (let i in lists) {
 
             out += renderBox(i, lists[i].render());
@@ -33,7 +33,7 @@ const usersListClass = function () {
 
     let renderBox = function (id, input) {
         let out = "";
-        out += '<div class="chatuserlist-box-peruser" id="chatuserlist-userbox-' + id + '">';
+        out += '<div class="chatmessagelist-messagebox" id="chatmessagelist-messagebox-' + id + '">';
         out += input;
         out += '</div>';
         return out;
@@ -52,7 +52,7 @@ const usersListClass = function () {
     let lists = {};
 }
 
-const userListClass = function (id) {
+const messageListClass = function (id) {
     this.adds = function (properties) {
         if (typeof properties === "undefined")
             return false;
@@ -73,28 +73,28 @@ const userListClass = function (id) {
     }
     this.render = function () {
         let rendered = "";
-        rendered += '<div class="chat-user" id="chat-user-' + db.id + '">';
-        rendered += '<div class="chatuserlist-username"> <p>' + db.name + '<span class="dot dot-'+db.status +'">' + db.messages + '</span></p> </div>';
-        rendered += '<div class="chatuserlist-status"> ' + db.status + ' </div>';
-        rendered += '<div class="chatuserlist-picture"><img src="' + db.picture + '"></div>' +
-            '<div class="chatuserlist-messages"> ' + db.messages + ' </div>'
-        rendered += '</div>';
+        let rendered_layer = ""
+        rendered += "<div id='chat-messagebox-" + db.id + "' class='chat-messagebox chat-messagebox-"
+         +db.id + 
+         "'><img class='chat-userpicture' id='chat-userpicture-"
+         +db.id+
+         "' src = '"+db.picture+ "'>"  + db.username + " : " + db.message + " --- " + db.time + "</div>" ;
         return rendered;
     }
 
     let properties = {
         id: "string",
-        name: "string",
-        status: "integer",
+        message: "string",
         picture: "string",
-        messages: "integer" 
+        username: "string",
+        time: "string"
     }
     let db = {
         id: id,
-        name: "",
-        status: 0, // 0 = offline, 1 = online , 2 = dnd, 3 = away, 4 = bussy
-        picture: "", // profile picture
-        messages: 0
+        message: "",
+        picture: "",
+        username: "",
+        time: ""
     }
 }
 
