@@ -1,0 +1,17 @@
+{
+  "name": "simplemessage",
+  "version": "0.0.1",
+  "description": "just for a simple chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "jollyRougers",
+  "dependencies": {
+    "confrc": "0.0.1-alpha0",
+    "initrc": "0.0.1-alpha0"
+  },
+  "devDependencies": {
+    "nanoTest": "0.0.4-alpha"
+  }
+}
