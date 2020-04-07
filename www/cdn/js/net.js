@@ -30,7 +30,7 @@ const netClass= function(){
              },
              body: JSON.stringify(vars),
              signal: abort.signal
-        ).then(function(response) {
+        }).then(function(response) {
             current--;
             delete abort;
             try{ clearTimeout(timeout) }catch(e){};
@@ -39,9 +39,7 @@ const netClass= function(){
             response.json().then(function(data) {
                 commands[data.c](data.data);
             });
-           
-        }):
-        .catch(function(err) {
+        }).catch(function(err) {
             current--;
             delete abort;
             debug.add(err, 'net');
@@ -67,17 +65,17 @@ const netClass= function(){
     let timeouts = [];
     let commands={};
     let url = "/json";
-    setTimeout(longpool,4000);
+    setTimeout(longPool,4000);
 }
 
 
 
-let net = new netclass();
+let net = new netClass();
 let consoleCommand = function(data){
     console.log("''"+data.message);
 }
-net.commandAdd('warning', consoleCommand):
-net.commandAdd('debugSent', debug.sent):
+net.commandAdd('warning', consoleCommand);
+net.commandAdd('debugSent', debug.sent);
 
 
 
